@@ -1,0 +1,117 @@
+========================================
+DERMALAB SALES TRANSACTION VBA SYSTEM
+========================================
+Purpose:
+This VBA script automates the sales transaction input, calculation,
+and dashboard refresh process for the DermaLab Sales Performance Analytics project.
+
+This system consists of two connected components:
+1. Submit Macro (Form to Database Automation)
+2. Worksheet Change Event (Auto Refresh Mechanism)
+
+----------------------------------------
+CODE 1: SUBMIT MACRO
+----------------------------------------
+Location:
+Standard Module (Module1)
+
+Function:
+- Transfers sales data from input form to Skincare Sales Table
+- Automatically generates Order ID
+- Calculates revenue, cost, and net profit
+- Resets input form after submission
+- Triggers dashboard refresh
+
+----------------------------------------
+Sub Submit()
+    Dim wsForm As Worksheet
+    Dim wsSales As Worksheet
+    Dim tbl As ListObject
+    Dim newRow As ListRow
+    Dim lastOrder As String
+    Dim nextOrderNum As Long
+    Dim newOrderID As String
+
+    Set wsForm = Sheets("Sales Form")
+    Set wsSales = Sheets("Skincare Sales")
+    Set tbl = wsSales.ListObjects("tblSales")
+    
+    ' Generate Order ID
+    If tbl.ListRows.Count = 0 Then
+        nextOrderNum = 1
+    Else
+        lastOrder = tbl.DataBodyRange(tbl.ListRows.Count, 1).Value
+        nextOrderNum = CLng(Mid(lastOrder, 5)) + 1
+    End If
+
+    newOrderID = "ORD-" & Format(nextOrderNum, "0000")
+    
+    ' Tambah baris baru ke Table
+    Set newRow = tbl.ListRows.Add
+
+    ' Input data utama
+    newRow.Range(1).Value = newOrderID
+    newRow.Range(2).Value = wsForm.Range("F5").Value
+    newRow.Range(3).Value = wsForm.Range("F7").Value
+    newRow.Range(4).Value = wsForm.Range("F9").Value
+    newRow.Range(5).Value = wsForm.Range("F11").Value
+    newRow.Range(6).Value = wsForm.Range("F13").Value
+    newRow.Range(7).Value = wsForm.Range("J5").Value
+    newRow.Range(8).Value = wsForm.Range("J7").Value
+    newRow.Range(9).Value = wsForm.Range("J9").Value
+    newRow.Range(10).Value = wsForm.Range("J11").Value
+    newRow.Range(11).Value = wsForm.Range("J13").Value
+    
+    ' Kolom turunan
+    newRow.Range(12).Value = Year(newRow.Range(5).Value) 'Year
+    newRow.Range(13).Value = Format(newRow.Range(5).Value, "MMM") 'Month
+    newRow.Range(14).Value = Format(newRow.Range(5).Value, "DDD") 'Day
+    newRow.Range(15).Value = newRow.Range(6).Value - newRow.Range(5).Value ' Delivery Time
+    newRow.Range(16).Value = newRow.Range(7).Value * newRow.Range(8).Value ' Sales Revenue
+    
+    ' Total Cost
+    newRow.Range(17).Formula = _
+        "=ROUND(G" & newRow.Index + tbl.HeaderRowRange.Row & _
+        "*H" & newRow.Index + tbl.HeaderRowRange.Row & _
+        "*VLOOKUP(D" & newRow.Index + tbl.HeaderRowRange.Row & _
+        ",'Cost Product'!A$1:C$21,3,FALSE),0)"
+        
+    ' Net Profit
+    newRow.Range(18).Formula = "=P" & newRow.Index + tbl.HeaderRowRange.Row & "-Q" & newRow.Index + tbl.HeaderRowRange.Row
+
+    ' Reset form
+    wsForm.Range("F5,F7,F9,F11,F13,J5,J9,J11,J13").ClearContents
+    wsForm.Range("J7").Formula = _
+        "=IF(F9="""","""",IFERROR(VLOOKUP(F9,'Cost Product'!A$1:C$21,2,FALSE),""""))"
+        
+    ' Refresh
+    ThisWorkbook.RefreshAll
+        
+End Sub
+
+----------------------------------------
+CODE 2: WORKSHEET CHANGE EVENT
+----------------------------------------
+Location:
+Worksheet Module (Sheet: Skincare Sales)
+
+Function:
+- Automatically refreshes all PivotTables and dashboards
+- Ensures analytical outputs remain synchronized with transaction data
+- Prevents stale insights caused by manual refresh dependency
+
+----------------------------------------
+Private Sub Worksheet_Change(ByVal Target As Range)
+
+    Dim tbl As ListObject
+    Set tbl = Me.ListObjects("tblSales")
+
+    If Not Intersect(Target, tbl.DataBodyRange) Is Nothing Then
+        Application.EnableEvents = False
+        ThisWorkbook.RefreshAll
+        Application.EnableEvents = True
+    End If
+
+End Sub
+
+

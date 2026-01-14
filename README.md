@@ -120,6 +120,14 @@ Rather than building dashboards that are purely descriptive, I focus on how data
 
 ---
 
+## 📖 Extended Case Study
+
+This project is also documented as a written case study focusing on business context and decision implications:
+
+👉 https://medium.com/@septianytup/membaca-kinerja-bisnis-skincare-lewat-data-451895611c44 (Indonesian Language)
+
+---
+
 ## **📎 Notes**
 
 This project was created as part of my **data analytics portfolio** to demonstrate end-to-end analytical capability, structured thinking, and the ability to translate operational data into meaningful business insights.

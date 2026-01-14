@@ -124,7 +124,7 @@ Rather than building dashboards that are purely descriptive, I focus on how data
 
 This project is also documented as a written case study focusing on business context and decision implications:
 
-👉 https://medium.com/@septianytup/membaca-kinerja-bisnis-skincare-lewat-data-451895611c44 (Indonesian Language)
+👉 https://medium.com/@septianytup/membaca-kinerja-bisnis-skincare-lewat-data-451895611c44 **(Indonesian Language)**
 
 ---
 

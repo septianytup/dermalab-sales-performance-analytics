@@ -8,8 +8,6 @@ In this project, I position myself as an analyst who bridges **operational trans
 
 This project represents how I approach analytics work: structured, critical of assumptions, and oriented toward business impact.
 
----
-
 ## **🎯 Business Questions**
 
 This project is designed to answer key business questions such as:
@@ -18,8 +16,6 @@ This project is designed to answer key business questions such as:
 * Do high-selling categories always generate the highest profit?
 * How do sales and profit trends evolve over time?
 * Which sales channels contribute the most to total revenue?
-
----
 
 ## **🗂 Dataset Description**
 
@@ -38,8 +34,6 @@ The analysis is based on **two interconnected simulated datasets**:
 * Linked to the sales dataset via *Product Name*
 
 > The datasets are simulated but designed to closely resemble real-world skincare retail operations.
-
----
 
 ## **🔄 Project Workflow**
 
@@ -75,8 +69,6 @@ The analysis is based on **two interconnected simulated datasets**:
 * Visualized trends, category comparisons, sales channels, and payment methods
 * Added slicers to enable dynamic data exploration
 
----
-
 ## **📈 Key Insights**
 
 * Product profitability differs **significantly** across categories, meaning business performance cannot be evaluated based on sales volume alone
@@ -92,15 +84,11 @@ These insights enable management to:
 * Re-evaluate pricing and cost structures for low-margin categories
 * Focus marketing and operational efforts on the most effective sales channels
 
----
-
 ## **👤 Analyst Perspective**
 
 This project reflects my approach as a data analyst who values **clarity over complexity**—using analytical and statistical methods only when they meaningfully support business decisions.
 
 Rather than building dashboards that are purely descriptive, I focus on how data can be translated into **objective, actionable insights** that support better decision-making.
-
----
 
 ## **🛠 Tools & Skills**
 
@@ -110,15 +98,11 @@ Rather than building dashboards that are purely descriptive, I focus on how data
 * Descriptive & Inferential Statistics (ANOVA)
 * Dashboard Design & Data Visualization
 
----
-
 ## **📌 Project Output**
 
 * Automated Excel-based sales input and tracking system
 * Clean, structured analytical dataset
 * Interactive dashboard for business decision support
-
----
 
 ## 📖 Extended Case Study
 
@@ -126,13 +110,9 @@ This project is also documented as a written case study focusing on business con
 
 👉 https://medium.com/@septianytup/membaca-kinerja-bisnis-skincare-lewat-data-451895611c44 **(Indonesian Language)**
 
----
-
 ## **📎 Notes**
 
 This project was created as part of my **data analytics portfolio** to demonstrate end-to-end analytical capability, structured thinking, and the ability to translate operational data into meaningful business insights.
-
----
 
 ## **📫 Contact**
 
@@ -140,4 +120,3 @@ For discussions related to this project, data analytics work, or potential colla
 
 - **Email:** tupseptiany@gmail.com  
 - **LinkedIn:** https://linkedin.com/in/septianytup
-
